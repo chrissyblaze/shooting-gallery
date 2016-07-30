@@ -1,0 +1,14 @@
+The sounds.py file is being run automatically on startup from the
+/etc/rc.local script, and logging to the sounds.log file in this directory.
+
+To see if it's running:
+ps auxw | grep python
+
+To kill it if you need to:
+run the ps as above to find the 'pid' (process id), then you can run
+sudo kill -9 <pid>
+
+To monitor the end of the log file:
+tail -f sounds.log
+
+
