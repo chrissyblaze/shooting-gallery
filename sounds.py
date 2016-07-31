@@ -29,23 +29,22 @@ lose_files = ["lose1.wav", "lose2.wav", "lose3.wav", "lose4.wav"]
 def callback_impl(sound_files):
 	wav = random.choice(sound_files)
 	wav_path = os.path.join(sound_dir, wav)
+	# our callback runs in a separate thread, but (I think) there is 
+	# just one to handle all events. so if we want to have a 1 second
+	# sound get triggered twice in a short time interval (and overplay 
+	# each other) we have to spawn a subprocess and not wait for it.
 	subprocess.Popen(["aplay", wav_path], stdin=None, stdout=None, stderr=None,close_fds=True)
 
-# our callback runs in a separate thread, but (I think) there is just one
-# such event handling thread. so if we want to have a 1 second sound get
-# trigger twice in a short time interval (and overplay each other) I think
-# need to spawn an aplay system process and not wait around for the 
-# os.system() call to return.
 def hit_cb(channel):
-	print "HIT: rising edge on channel %d" % channel
+	print "HIT: falling edge on channel %d" % channel
 	callback_impl(hit_files)
 
 def win_cb(channel):
-	print "WIN: rising edge on channel %d" % channel
+	print "WIN: falling edge on channel %d" % channel
 	callback_impl(win_files)
 
 def lose_cb(channel):
-	print "LOSE: rising edge on channel %d" % channel
+	print "LOSE: falling edge on channel %d" % channel
 	callback_impl(lose_files)
 
 GPIO.add_event_detect(hit_pin, GPIO.FALLING, callback=hit_cb, bouncetime=1)
