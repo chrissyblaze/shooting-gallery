@@ -21,7 +21,7 @@ GPIO.setup(hit_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(win_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(lose_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-sound_dir = "/home/pi/shooting-gallery"
+sound_dir = "/home/pi/shooting-gallery/sounds"
 hit_files = ["ricochet1.wav", "ricochet2.wav", "ricochet3.wav", "ricochet4.wav", "ricochet5.wav", "ricochet6.wav", "ricochet7.wav", "ricochet8.wav", "ricochet9.wav", "ricochet10.wav", "ricochet11.wav", "ricochet12.wav", "ricochet13.wav", "ricochet14.wav", "ricochet15.wav", "ricochet16.wav", "ricochet17.wav", "ricochet18.wav", "ricochet19.wav", "ricochet20.wav", "ricochet21.wav", "ricochet22.wav", "ricochet23.wav"]
 win_files = ["win1.wav", "win2.wav"]
 lose_files = ["lose1.wav", "lose2.wav", "lose3.wav", "lose4.wav"]
